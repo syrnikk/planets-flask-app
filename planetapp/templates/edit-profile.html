@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h3>Edit Your Profile</h3>
+        <hr class="my-4">
+
+
+        <div class="container" style="max-width: 500px;">
+          <form action="{{ url_for('auth.edit_profile') }}" method="post">
+              {{  form.hidden_tag() }}
+              {{  form.username.label(class="form-label") }}
+              {{  form.username(class="form-control", placeholder="Enter username") }}
+              <br/>
+              {{  form.email.label(class="form-label") }}
+              {{  form.email(class="form-control", placeholder="Enter email") }}
+              <br/>
+              {{  form.birth_date.label(class="form-label") }}
+              {{  form.birth_date(class="form-control", placeholder="Birth date") }}
+              <br/>
+              {{  form.bio.label(class="form-label") }}
+              {{  form.bio(class="form-control", placeholder="Bio", rows="4") }}
+              <br/>
+              {{ form.submit(class="btn btn-primary", style="width: 100%") }}
+              <br/><br/><br/>
+          </form>
+          {% for message in get_flashed_messages() %}
+            <div class="alert alert-dismissible fade show alert-warning" style="text-align: center" >
+              <button type="button" class="btn-close fade" data-bs-dismiss="alert"></button>
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}

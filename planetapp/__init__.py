@@ -2,7 +2,6 @@ from flask import Flask
 
 from .auth import auth
 from .extensions import bcrypt, db, login_manager
-from .models import User
 from .views import views
 from config import Config
 
@@ -16,6 +15,7 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
 
     app.register_blueprint(views)
+    app.register_blueprint(auth)
 
     with app.app_context():
         db.create_all()
