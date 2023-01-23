@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<br/>
+    <div class="container">
+        <h1>Solar System Animation</h1>
+        <div class="row">
+            <div class="col">
+                <canvas id="canvas" width="1024px" height="600px"></canvas>
+            </div>
+            <div class="col">
+                <h5>Zoom: <span id="zoom-value">1</span></h5>
+                <input id="zoom" type="range" min="50" max="200" value="100" />
+                <h5>Speed: <span id="speed-value">1</span></h5>
+                <input id="speed" type="range" min="0" max="200" value="100" />
+            </div>
+        </div>
+    </div>
+<br/>
+<script src="{{url_for('static', filename='js/animation.js')}}"></script>
+{% endblock %}
