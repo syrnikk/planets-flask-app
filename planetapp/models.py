@@ -9,3 +9,11 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(80), nullable=False)
     birth_date = db.Column(db.Date, nullable=False)
     bio = db.Column(db.String)
+
+
+class Planet(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), nullable=False, unique=True)
+    title = db.Column(db.String(20), nullable=False, unique=True)
+    image_url = db.Column(db.String(255), nullable=False)
+    desc = db.Column(db.String, nullable=False)
