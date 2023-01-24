@@ -3,11 +3,11 @@ class Planet {
     static zoom = 1
     static speed = 1
 
-    constructor(distance, velocity, radius,  imgSrc) {
+    constructor(distance, velocity, radius, angle, imgSrc) {
         this.distance = distance
         this.velocity = velocity
         this.radius = radius
-        this.angle = 0
+        this.angle = angle
         this.img = new Image()
         this.img.src = imgSrc
     }
@@ -43,6 +43,10 @@ function draw() {
     requestAnimationFrame(draw)
 }
 
+function random(min, max) {
+    return Math.random() * (max - min) + min
+}
+
 // canvas
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
@@ -55,16 +59,16 @@ const center = {
 
 // load images
 const prefix = 'static/assets/'
-const sun = new Planet(0, 0, 40, prefix + 'sun.png')
+const sun = new Planet(0, 0, 40, 0, prefix + 'sun.png')
 const planets = [
-    new Planet(70, 1 / 0.2408, 7, prefix + 'mercury.png'),
-    new Planet(100, 1 / 0.6152, 12, prefix + 'venus.png'),
-    new Planet(140, 1, 14, prefix + 'earth.png'),
-    new Planet(185, 1 / 1.8808, 10, prefix + 'mars.png'),
-    new Planet(265, 1 / 11.8637, 34, prefix + 'jupiter.png'),
-    new Planet(340, 1 / 29.4484, 42, prefix + 'saturn.png'),
-    new Planet(400, 1 / 84.0711, 20, prefix + 'uranus.png'),
-    new Planet(460, 1 / 164.8799, 20, prefix + 'neptune.png')
+    new Planet(70, 1 / 0.2408, 7, random(0, 2 * Math.PI), prefix + 'mercury.png'),
+    new Planet(100, 1 / 0.6152, 12, random(0, 2 * Math.PI), prefix + 'venus.png'),
+    new Planet(140, 1, 14, random(0, 2 * Math.PI), prefix + 'earth.png'),
+    new Planet(185, 1 / 1.8808, 10, random(0, 2 * Math.PI), prefix + 'mars.png'),
+    new Planet(265, 1 / 11.8637, 34, random(0, 2 * Math.PI), prefix + 'jupiter.png'),
+    new Planet(340, 1 / 29.4484, 42, random(0, 2 * Math.PI), prefix + 'saturn.png'),
+    new Planet(400, 1 / 84.0711, 20, random(0, 2 * Math.PI), prefix + 'uranus.png'),
+    new Planet(460, 1 / 164.8799, 20, random(0, 2 * Math.PI), prefix + 'neptune.png')
 ]
 
 // check if all images are loaded
