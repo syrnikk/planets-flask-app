@@ -21,5 +21,5 @@ def wiki(planet_name):
 
 @views.route('/animation')
 def animation():
-    settings = db.session.query(Settings).filter_by(user_id=current_user.id).first()
+    settings = db.session.query(Settings).filter_by(user_id=current_user.id).first() if current_user.is_authenticated else None
     return render_template('animation.html', settings=settings)
