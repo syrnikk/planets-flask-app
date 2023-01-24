@@ -20,3 +20,4 @@ tomli==2.0.1
 Werkzeug==2.2.2
 WTForms==3.0.1
 zipp==3.11.0
+psycopg2==2.9.5
