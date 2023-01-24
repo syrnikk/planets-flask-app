@@ -6,15 +6,15 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white col-md-auto">
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-              <a href="/wiki/sun" class="list-group-item list-group-item-action py-2 ripple"><span>Sun</span></a>
-              <a href="/wiki/mercury" class="list-group-item list-group-item-action py-2 ripple"><span>Mercury</span></a>
-              <a href="/wiki/venus" class="list-group-item list-group-item-action py-2 ripple"><span>Venus</span></a>
-              <a href="/wiki/earth" class="list-group-item list-group-item-action py-2 ripple"><span>Earth</span></a>
-              <a href="/wiki/mars" class="list-group-item list-group-item-action py-2 ripple"><span>Mars</span></a>
-              <a href="/wiki/jupiter" class="list-group-item list-group-item-action py-2 ripple"><span>Jupiter</span></a>
-              <a href="/wiki/saturn" class="list-group-item list-group-item-action py-2 ripple"><span>Saturn</span></a>
-              <a href="/wiki/uranus" class="list-group-item list-group-item-action py-2 ripple"><span>Uranus</span></a>
-              <a href="/wiki/neptune" class="list-group-item list-group-item-action py-2 ripple"><span>Neptune</span></a>
+              <a href="/wiki/sun" class="list-group-item list-group-item-action py-2 ripple {{ 'active' if planet.name == 'sun' else '' }}"><span>Sun</span></a>
+              <a href="/wiki/mercury" class="list-group-item list-group-item-action py-2 ripple {{ 'active' if planet.name == 'mercury' else '' }}"><span>Mercury</span></a>
+              <a href="/wiki/venus" class="list-group-item list-group-item-action py-2 ripple {{ 'active' if planet.name == 'venus' else '' }}"><span>Venus</span></a>
+              <a href="/wiki/earth" class="list-group-item list-group-item-action py-2 ripple {{ 'active' if planet.name == 'earth' else '' }}"><span>Earth</span></a>
+              <a href="/wiki/mars" class="list-group-item list-group-item-action py-2 ripple {{ 'active' if planet.name == 'mars' else '' }}"><span>Mars</span></a>
+              <a href="/wiki/jupiter" class="list-group-item list-group-item-action py-2 ripple {{ 'active' if planet.name == 'jupiter' else '' }}"><span>Jupiter</span></a>
+              <a href="/wiki/saturn" class="list-group-item list-group-item-action py-2 ripple {{ 'active' if planet.name == 'saturn' else '' }}"><span>Saturn</span></a>
+              <a href="/wiki/uranus" class="list-group-item list-group-item-action py-2 ripple {{ 'active' if planet.name == 'uranus' else '' }}"><span>Uranus</span></a>
+              <a href="/wiki/neptune" class="list-group-item list-group-item-action py-2 ripple {{ 'active' if planet.name == 'neptune' else '' }}"><span>Neptune</span></a>
             </div>
           </div>
         </nav>
