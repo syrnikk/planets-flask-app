@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template
+from flask_login import current_user
 
 from planetapp import db
-from planetapp.models import Planet
+from planetapp.models import Planet, Settings
 
 views = Blueprint('views', __name__)
 
@@ -20,4 +21,5 @@ def wiki(planet_name):
 
 @views.route('/animation')
 def animation():
-    return render_template('animation.html')
+    settings = db.session.query(Settings).filter_by(user_id=current_user.id).first()
+    return render_template('animation.html', settings=settings)

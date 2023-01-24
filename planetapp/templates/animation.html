@@ -9,10 +9,18 @@
                 <canvas id="canvas" width="1024px" height="600px"></canvas>
             </div>
             <div class="col">
-                <h5>Zoom: <span id="zoom-value">1</span></h5>
-                <input class="form-range" id="zoom" type="range" min="50" max="200" value="100" />
-                <h5>Speed: <span id="speed-value">1</span></h5>
-                <input class="form-range" id="speed" type="range" min="0" max="200" value="100" />
+                <h5>Zoom: <span id="zoom-value">{{ settings.zoom / 100 if settings else 1 }}</span></h5>
+                <input class="form-range" id="zoom" type="range" min="50" max="200" value="{{ settings.zoom if settings else 100 }}" />
+                <h5>Speed: <span id="speed-value">{{ settings.speed / 100 if settings else 1 }}</span></h5>
+                <input class="form-range" id="speed" type="range" min="0" max="200" value="{{ settings.speed if settings else 100 }}" />
+                {% if current_user.is_authenticated %}
+                <hr>
+                <div class="container">
+                    <button type="button" id="save-settings" class="btn btn-primary m-2">Save your settings</button>
+                    <button type="button" id="restore-settings" class="btn btn-danger m-2">Restore default settings</button>
+                    <div id="info" class="m-2"></div>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>

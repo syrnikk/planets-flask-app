@@ -88,12 +88,64 @@ const zoomValue = document.getElementById('zoom-value')
 const speed = document.getElementById('speed')
 const speedValue = document.getElementById('speed-value')
 
-zoom.addEventListener('change', e => {
+zoom.addEventListener('input', e => {
     Planet.zoom = e.target.value / 100
     zoomValue.innerHTML = Planet.zoom
+    infoDiv.innerHTML = ''
 })
 
-speed.addEventListener('change', e => {
+speed.addEventListener('input', e => {
     Planet.speed = e.target.value / 100
     speedValue.innerHTML = Planet.speed
+    infoDiv.innerHTML = ''
+})
+
+// settings buttons
+const saveButton = document.getElementById('save-settings')
+const restoreButton = document.getElementById('restore-settings')
+const infoDiv = document.getElementById('info')
+
+const successfulInfo = `
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      Success!
+    </div>
+`
+
+const failedInfo = `
+    <div class="alert alert-dismissible alert-warning">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      Failure!
+    </div>
+`
+
+saveButton.addEventListener('click', e => {
+    data = {
+        zoom: parseInt(zoom.value),
+        speed: parseInt(speed.value)
+    }
+
+    fetch('/settings/save', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if(response.status == 200) {
+            infoDiv.innerHTML = successfulInfo
+        } else {
+            infoDiv.innerHTML = failedInfo
+        }
+    })
+})
+
+restoreButton.addEventListener('click', e => {
+    zoom.value = 100
+    speed.value = 100
+    const event = new Event('input')
+    zoom.dispatchEvent(event)
+    speed.dispatchEvent(event)
+    infoDiv.innerHTML = ''
 })
